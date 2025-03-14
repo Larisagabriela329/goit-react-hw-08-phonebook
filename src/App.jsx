@@ -75,7 +75,7 @@ const App = () => {
   };
 
   return (
-    <Router basename="/goit-react-hw-08-phonebook">
+    <Router>
       <CssBaseline />
       <Navigation />
       {auth.isAuthenticated && auth.user && (
