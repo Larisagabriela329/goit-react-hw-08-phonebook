@@ -15,6 +15,7 @@ import ReduxStateViewer from 'components/ReduxStateViewer';
 import { selectAuth, logoutUser } from './redux/authSlice';
 import { Container, CssBaseline } from '@mui/material';
 import styles from './components/ContactForm.module.css';
+import { BrowserRouter } from 'react-router-dom';
 
 const App = () => {
 
@@ -75,7 +76,7 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <BrowserRouter basename="/goit-react-hw-08-phonebook">
       <CssBaseline />
       <Navigation />
       {auth.isAuthenticated && auth.user && (
@@ -115,7 +116,7 @@ const App = () => {
           </>
         )}
       </Container>
-    </Router>
+    </BrowserRouter>
   );
 };
 
