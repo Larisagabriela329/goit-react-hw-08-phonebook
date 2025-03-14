@@ -1,34 +1,22 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-const BASE_URL =
-  'https://67c2f1741851890165adb703.mockapi.io/contacts';
+import api from '../api';
 
 export const fetchContacts = createAsyncThunk('contacts/fetchAll', async () => {
-  const response = await axios.get(`${BASE_URL}/contacts`);
+  const response = await api.get('/contacts');
   return response.data;
 });
 
 export const addContact = createAsyncThunk('contacts/addContact', async (contact) => {
-  const response = await axios.post(`${BASE_URL}/contacts`, contact);
+  const response = await api.post('/contacts', contact);
   return response.data;
 });
 
-
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
-  async (contactId, thunkAPI) => {
-    console.log('Deleting contact with ID:', contactId);
-    
-    try {
-      await axios.delete(`${BASE_URL}/contacts/${contactId}`);
-      return contactId;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
+  async (contactId) => {
+    await api.delete(`/contacts/${contactId}`);
+    return contactId;
+});
 
 const contactsSlice = createSlice({
   name: 'contacts',
