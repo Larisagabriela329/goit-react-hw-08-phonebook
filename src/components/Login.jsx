@@ -8,12 +8,10 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
 
-
     const handleSubmit = async event => {
         event.preventDefault();
         dispatch(loginUser({email, password}));
     };
-
     
     return (
         <Box
