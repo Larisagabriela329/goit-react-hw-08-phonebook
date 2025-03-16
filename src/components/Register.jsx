@@ -14,8 +14,6 @@ const Register = () => {
     dispatch(registerUser({ name, email, password }));
   };
   
-
-
   return (
     <Box
       component="form"
